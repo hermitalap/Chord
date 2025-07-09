@@ -63,7 +63,7 @@ overkillDB2<-function(seu,sce,doubletrate,seed=1,k=20,overkill=T,overkillrate=1,
     x<-c(x,rnorm(1,mean=1,sd=0.1))
     y<-c(y,rnorm(1,mean=1,sd=0.1))
   }
-  counts<-as.matrix(seu2@assays$RNA@counts)
+  counts<-as.matrix(GetAssayData(seu2, layer = "counts"))
   counts<-cbind(counts,(counts[,a]*x+counts[,b]*y)/(x+y))##引入高斯分布合
 
   #----
