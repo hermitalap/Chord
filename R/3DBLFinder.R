@@ -36,7 +36,7 @@ DBF<-function(seu,ground_truth=T,doubletrate,dbf.PCs=1:10,
 
 
   ## Run DoubletFinder with varying classification stringencies ----------------------------------------------------------------
-  seu <- doubletFinder(seu, PCs = dbf.PCs, pN = dbf.pN, pK = if (is.na(dbf.pK)){mpK}else{dbf.pK}, nExp = nExp_poi, reuse.pANN = FALSE, sct = FALSE)
+  seu <- doubletFinder(seu, PCs = dbf.PCs, pN = dbf.pN, pK = if (is.na(dbf.pK)){mpK}else{dbf.pK}, nExp = nExp_poi, sct = FALSE)
   #seu <- doubletFinder_v3(seu, PCs = 1:10, pN = 0.25, pK = 0.09, nExp = nExp_poi.adj, reuse.pANN = "pANN_0.25_0.09_150", sct = FALSE)
   return(seu)
 }
