@@ -20,14 +20,14 @@ DBF<-function(seu,ground_truth=T,doubletrate,dbf.PCs=1:10,
   if (is.na(dbf.pK)) {
     if(ground_truth==F){
       ## pK Identification (no ground-truth) ---------------------------------------------------------------------------------------
-      sweep.res.list_kidney <- paramSweep_v3(seu, PCs = dbf.PCs, sct = FALSE)
+      sweep.res.list_kidney <- paramSweep(seu, PCs = dbf.PCs, sct = FALSE)
       sweep.stats_kidney <- summarizeSweep(sweep.res.list_kidney, GT = FALSE)
       bcmvn_kidney <- find.pK(sweep.stats_kidney)
       mpK<-as.numeric(as.vector(bcmvn_kidney$pK[which.max(bcmvn_kidney$BCmetric)]))
     }
     if(ground_truth==T){
       ## pK Identification (ground-truth) ------------------------------------------------------------------------------------------
-      sweep.res.list_kidney <- paramSweep_v3(seu, PCs = 1:10, sct = FALSE)
+      sweep.res.list_kidney <- paramSweep(seu, PCs = 1:10, sct = FALSE)
       #gt.calls <- seu@meta.data[rownames(sweep.res.list_kidney[[1]]), "label_scds"]  ## GT is a vector containing "Singlet" and "Doublet" calls recorded using sample multiplexing classification and/or in silico geneotyping results
       #sweep.stats_kidney <- summarizeSweep(sweep.res.list_kidney, GT = TRUE, GT.calls = gt.calls)
       #bcmvn_kidney <- find.pK(sweep.stats_kidney)
